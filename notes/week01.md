@@ -1,4 +1,4 @@
-
+![test](assets/anime.jpg)
 # 数组
 
 定义：在计算机内存中连续存储、具有固定维度结构的数据集合，通过索引访问元素。
@@ -202,9 +202,9 @@ img = cv2.imread("images/anime.jpg") #给出路径
 print(img) #输出
 ```
 
-![](notes/assets/anime.jpg)
+![](assets/anime.jpg)
 结果：
-![](notes/assets/Pasted%20image%2020260722125308.png)
+![](assets/Pasted%20image%2020260722125308.png)
 解释：每一个`[255,255,255]`都是BGR（opencv的格式）的组合，而255,255,255指的正是白色像素点
 
 ## 读取多个图像并输出输出尺寸、通道数、像素值范围实验
@@ -224,7 +224,7 @@ img = cv2.imread("images/scenery.jpg")
 
 print(img)
 ```
-![](notes/assets/anime.jpg)![486](notes/assets/lenna.jpg)![scenery原图](notes/assets/scenery.jpg)
+![](assets/anime.jpg)![486](assets/lenna.jpg)![scenery原图](assets/scenery.jpg)
 结果：略，可以参考上一个实验
 但是这样的实验结果有些过于粗糙，让我们进行优化
 优化后（使用列表进行输入，输出改为图片路径与图片的数据格式）：
@@ -244,7 +244,7 @@ for path in image_paths:   #循环将image_paths的内容赋值给path
     print(img.min())       #输出像素值最低值
     print(img.max())       #输出像素值最高值
 ```
-结果：![](notes/assets/Pasted%20image%2020260722133110.png)
+结果：![](assets/Pasted%20image%2020260722133110.png)
 
 ### 灰度图
 ```
@@ -276,7 +276,7 @@ for path in image_paths:
     print(img.min())       
     print(img.max())       
 ```
-![anime灰度图](notes/assets/anime_gray.jpg)![lenna灰度图](notes/assets/lenna_gray.jpg)![scenery灰度图](notes/assets/scenery_gray.jpg)
+![anime灰度图](assets/anime_gray.jpg)![lenna灰度图](assets/lenna_gray.jpg)![scenery灰度图](assets/scenery_gray.jpg)
 
 ## HSV图片
 ```
@@ -308,7 +308,7 @@ for path in image_paths:
     print(img.max())   
 ```
 结果：
-![anime HSV](notes/assets/anime_hsv.jpg)![lenna HSV](notes/assets/lenna_hsv.jpg)![scenery HSV](notes/assets/scenery_hsv.jpg)
+![anime HSV](assets/anime_hsv.jpg)![lenna HSV](assets/lenna_hsv.jpg)![scenery HSV](assets/scenery_hsv.jpg)
 
 ## 缩放图
 ```
@@ -346,7 +346,7 @@ for path in image_paths:
 结果：
 
 
-![anime resize](notes/assets/anime_resize.jpg)![lenna resize](notes/assets/lenna_resize.jpg)![scenery resize](notes/assets/scenery_resize.jpg)
+![anime resize](assets/anime_resize.jpg)![lenna resize](assets/lenna_resize.jpg)![scenery resize](assets/scenery_resize.jpg)
 ## 项目化
 最终在进行仓库纳入之后，发现先前的代码的内容未考虑项目化之后的路径寻找问题，为了解决该问题，对代码进行修改，并做出一定优化
 ```
