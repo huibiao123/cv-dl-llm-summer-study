@@ -215,7 +215,7 @@ plt.savefig(str(OUTPUT_DIR / "result_wrong.png"), bbox_inches="tight", pad_inche
 plt.close()                                 #关闭绘图对象
 ```
 结果：
-![](notes/assets/result_wrong.png)
+![](assets/result_wrong.png)
 这样就有些明显错误了
 由于这张图片中，既存在白色的背景，又存在灰色的背景，图片背景是浅色白色，硬币是较暗区域
 而 `findContours()` 默认寻找白色区域轮廓，所以它找到的是：大面积背景，而不是硬币
@@ -344,7 +344,7 @@ plt.savefig(                                #保存结果
 plt.close()                                 #关闭绘图对象
 ```
 结果：
-![](notes/assets/result_right.png)
+![](assets/result_right.png)
 ### 改动对比说明：
 ### 1.二值化修改：
 
