@@ -92,3 +92,59 @@ Summer study notes and experiments on Computer Vision, Deep Learning and LLM.
   - Batch Size变化：
     - 影响梯度计算稳定性
     - 影响训练速度和Loss变化曲线
+# Week04 多层感知机（MLP）与图像分类基础
+
+## 完成内容
+
+### MLP模型结构学习
+
+- 全连接层（Linear）
+- 激活函数（ReLU）
+- Dropout正则化
+
+### MNIST手写数字分类实验
+
+完成基于PyTorch的MLP分类模型：
+
+- MNIST数据集加载
+- Tensor转换
+- 训练集 / 验证集 / 测试集划分
+
+### 模型训练流程
+
+- 前向传播（Forward）
+- Loss计算（Cross Entropy）
+- 反向传播（Backward）
+- 参数更新（Update）
+
+### 模型实验
+
+- 比较不同隐藏层规模对模型效果的影响
+- 调整学习率（Learning Rate）
+- 调整Batch Size
+- 使用Dropout降低过拟合
+
+## 主要成果
+
+### 理解MLP图像分类流程
+
+- 图片输入与数据预处理
+- 神经网络特征提取
+- 分类结果预测
+
+### 掌握深度学习核心概念
+
+- 多层感知机（MLP）
+- ReLU激活函数
+- Cross Entropy Loss
+- Dropout
+- 训练集 / 验证集 / 测试集划分
+
+### 完成实验
+
+基于PyTorch完成MNIST分类任务：
+
+- 搭建MLP模型
+- 完成模型训练与测试
+- 绘制Loss变化曲线
+- 分析不同参数对模型性能的影响

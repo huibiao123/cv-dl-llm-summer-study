@@ -1,0 +1,3 @@
+Experiment,Hidden_Size,Learning_Rate,Batch_Size,Dropout,Test_Accuracy
+MLP-128,128,0.001,64,0.0,0.9745
+MLP-256-Dropout,256,0.0005,128,0.3,0.9753
