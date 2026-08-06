@@ -148,3 +148,59 @@ Summer study notes and experiments on Computer Vision, Deep Learning and LLM.
 - 完成模型训练与测试
 - 绘制Loss变化曲线
 - 分析不同参数对模型性能的影响
+# Week05 卷积神经网络（CNN）与图像分类
+
+## 完成内容
+
+### CNN基础学习
+
+- 卷积神经网络（CNN）
+- 卷积层（Conv2D）
+- 卷积核（Kernel）
+- 特征图（Feature Map）
+- Padding、Stride、Pooling
+
+### CNN模型训练
+
+完成基于PyTorch的CNN图像分类实验：
+
+- MNIST数据集加载与预处理
+- CNN模型搭建
+- 卷积层、池化层、全连接层组合
+- 使用Cross Entropy Loss进行分类训练
+- 使用Adam优化器更新参数
+
+### 模型测试与分析
+
+完成：
+
+- 测试集准确率计算
+- Loss曲线绘制
+- 正确预测样例可视化
+- 错误预测样例分析
+
+
+## 主要成果
+
+### 理解CNN图像分类流程
+
+掌握：
+
+- 卷积提取图像局部特征
+- 池化降低特征维度
+- 全连接层完成分类任务
+
+### 理解CNN相比MLP的优势
+
+- 保留图像空间结构信息
+- 自动学习图像特征
+- 更适合图像分类任务
+
+### 完成实验
+
+基于PyTorch完成MNIST CNN分类：
+
+- 搭建基础CNN网络
+- 完成模型训练与测试
+- 输出测试准确率
+- 保存训练曲线与预测结果
