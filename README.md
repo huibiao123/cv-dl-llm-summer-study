@@ -204,3 +204,89 @@ Summer study notes and experiments on Computer Vision, Deep Learning and LLM.
 - 完成模型训练与测试
 - 输出测试准确率
 - 保存训练曲线与预测结果
+# Week06 经典CNN架构与迁移学习
+
+## 完成内容
+
+### 经典网络结构学习
+
+学习经典卷积神经网络：
+
+- AlexNet
+- VGG
+- GoogLeNet（Inception）
+- ResNet
+
+理解不同网络结构在深度学习发展中的作用：
+
+- 提升网络深度
+- 优化特征提取能力
+- 降低参数量
+- 解决深层网络训练困难问题
+
+
+### BatchNorm与残差连接学习
+
+学习：
+
+- Batch Normalization（BatchNorm）
+- 残差连接（Residual Connection）
+
+理解：
+
+- BatchNorm通过规范化特征分布提高训练稳定性
+- 残差连接通过Shortcut改善梯度传播
+- ResNet解决深层网络训练中的梯度消失问题
+
+
+### 迁移学习实验
+
+完成基于PyTorch的ResNet18迁移学习实验：
+
+- 加载ImageNet预训练模型
+- 冻结原始网络参数
+- 修改分类层适配新任务
+- 使用MNIST数据集进行分类训练
+
+### 数据处理与模型训练
+
+完成：
+
+- 图片Resize调整
+- 灰度图转换三通道
+- ImageNet标准化
+- ResNet18模型训练
+- 测试准确率计算
+- Accuracy曲线绘制
+
+
+## 主要成果
+
+### 理解经典CNN发展过程
+
+掌握：
+
+- AlexNet推动深度学习视觉任务发展
+- VGG通过堆叠卷积构建深层网络
+- GoogLeNet通过Inception模块提升特征提取效率
+- ResNet通过残差连接优化深层网络训练
+
+
+### 理解迁移学习流程
+
+掌握：
+
+- 预训练模型加载
+- 特征提取层冻结
+- 分类头替换
+- 新任务微调训练
+
+
+### 完成实验
+
+基于PyTorch完成ResNet18迁移学习：
+
+- 使用ImageNet预训练权重
+- 完成MNIST分类任务
+- 输出测试准确率
+- 保存模型参数与训练记录
