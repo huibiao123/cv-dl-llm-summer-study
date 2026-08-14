@@ -209,84 +209,131 @@ Summer study notes and experiments on Computer Vision, Deep Learning and LLM.
 ## 完成内容
 
 ### 经典网络结构学习
-
 学习经典卷积神经网络：
-
 - AlexNet
 - VGG
 - GoogLeNet（Inception）
 - ResNet
-
 理解不同网络结构在深度学习发展中的作用：
-
 - 提升网络深度
 - 优化特征提取能力
 - 降低参数量
 - 解决深层网络训练困难问题
-
-
 ### BatchNorm与残差连接学习
-
 学习：
-
 - Batch Normalization（BatchNorm）
 - 残差连接（Residual Connection）
-
 理解：
-
 - BatchNorm通过规范化特征分布提高训练稳定性
 - 残差连接通过Shortcut改善梯度传播
 - ResNet解决深层网络训练中的梯度消失问题
-
-
 ### 迁移学习实验
-
 完成基于PyTorch的ResNet18迁移学习实验：
-
 - 加载ImageNet预训练模型
 - 冻结原始网络参数
 - 修改分类层适配新任务
 - 使用MNIST数据集进行分类训练
-
 ### 数据处理与模型训练
-
 完成：
-
 - 图片Resize调整
 - 灰度图转换三通道
 - ImageNet标准化
 - ResNet18模型训练
 - 测试准确率计算
 - Accuracy曲线绘制
-
-
 ## 主要成果
-
 ### 理解经典CNN发展过程
-
 掌握：
-
 - AlexNet推动深度学习视觉任务发展
 - VGG通过堆叠卷积构建深层网络
 - GoogLeNet通过Inception模块提升特征提取效率
 - ResNet通过残差连接优化深层网络训练
-
-
 ### 理解迁移学习流程
-
 掌握：
-
 - 预训练模型加载
 - 特征提取层冻结
 - 分类头替换
 - 新任务微调训练
-
-
 ### 完成实验
-
 基于PyTorch完成ResNet18迁移学习：
-
 - 使用ImageNet预训练权重
 - 完成MNIST分类任务
 - 输出测试准确率
 - 保存模型参数与训练记录
+- 
+# Week07 PyTorch工程化训练与实验复现
+## 理论学习
+- Dataset / DataLoader：理解数据集管理、批量加载、Batch Size 与 Shuffle
+- 数据增强：理解通过随机变换增加数据多样性，提高模型泛化能力
+- 配置文件：理解将实验参数与代码逻辑分离，便于管理不同实验
+- Checkpoint：理解训练过程中的模型存档，以及最佳模型与断点续训的区别
+- 日志：理解记录训练过程、实验参数和运行状态
+- TensorBoard：理解使用可视化面板观察 Loss、Accuracy、Learning Rate 等训练指标
+- 混淆矩阵：理解通过真实类别与预测类别的对应关系分析模型分类结果
+- 实验复现：理解随机种子、确定性设置与实验环境对结果复现的影响
+## 完成内容
+### Dataset / DataLoader
+- 使用 `Dataset` 管理数据集
+- 使用 `DataLoader` 进行Batch训练
+- 完成训练集 / 验证集 / 测试集划分
+### 模块化训练
+将训练代码拆分为：
+- `dataset.py`：数据集与DataLoader
+- `model.py`：模型定义
+- `train.py`：训练与验证
+- `test.py`：测试与结果分析
+### 模型保存与日志
+完成：
+- 保存验证集表现最佳的模型
+- 记录训练过程日志
+- 保存训练历史 `history.csv`
+- 绘制训练 / 验证 Accuracy 曲线
+
+### 实验结果分析
+完成：
+- 测试集 Accuracy 计算
+- 10×10 混淆矩阵生成
+- 混淆矩阵可视化
+- 分析模型具体分类错误
+### 实验复现
+学习并实践：
+- Python / NumPy / PyTorch 随机种子
+- CUDA 随机种子
+- cuDNN 确定性设置
+通过固定实验参数和随机种子，提高实验结果的可重复性。
+## 主要成果
+
+### 掌握工程化训练流程
+```
+Dataset
+   ↓
+DataLoader
+   ↓
+Model
+   ↓
+Train
+   ↓
+Validation
+   ↓
+保存最佳模型
+   ↓
+Test
+   ↓
+结果分析
+```
+### 完成实验
+
+基于 PyTorch 完成 ResNet18 迁移学习实验：
+- 使用 ImageNet 预训练 ResNet18
+- 完成 MNIST 分类训练
+- 保存 `best_model.pth`
+- 输出 Test Accuracy
+- 生成混淆矩阵
+- 保存训练日志和实验记录
+### 学习内容
+了解并学习：
+- 数据增强
+- 配置文件
+- Checkpoint
+- TensorBoard
+其中上述内容作为工程化深度学习的扩展知识进行学习，**本周实验未实际实现数据增强、配置文件和 TensorBoard**。

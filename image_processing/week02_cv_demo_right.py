@@ -5,46 +5,24 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 IMAGE_DIR = BASE_DIR / "images"
 OUTPUT_DIR = BASE_DIR / "output"  
-
 image_path = IMAGE_DIR / "coins.png"
 
-
 img = cv2.imread(str(image_path))
-
 
 if img is None:
     print("读取失败")
     exit()
-
-
-
-# =====================
-# 灰度
-# =====================
 
 gray = cv2.cvtColor(
     img,
     cv2.COLOR_BGR2GRAY
 )
 
-
-
-# =====================
-# 模糊
-# =====================
-
 blur = cv2.GaussianBlur(
     gray,
     (5,5),
     0
 )
-
-
-
-# =====================
-# 二值化
-# 反转
-# =====================
 
 _, thresh = cv2.threshold(
     blur,
@@ -53,17 +31,10 @@ _, thresh = cv2.threshold(
     cv2.THRESH_BINARY_INV
 )
 
-
-
-# =====================
-# 形态学
-# =====================
-
 kernel = cv2.getStructuringElement(
     cv2.MORPH_ELLIPSE,
     (3,3)
 )
-
 
 clean = cv2.morphologyEx(
     thresh,
@@ -71,18 +42,11 @@ clean = cv2.morphologyEx(
     kernel
 )
 
-
 clean = cv2.morphologyEx(
     clean,
     cv2.MORPH_CLOSE,
     kernel
 )
-
-
-
-# =====================
-# 轮廓
-# =====================
 
 contours,_ = cv2.findContours(
     clean,
@@ -90,32 +54,19 @@ contours,_ = cv2.findContours(
     cv2.CHAIN_APPROX_SIMPLE
 )
 
-
-
 result = img.copy()
 
-
 count = 0
-
 
 for contour in contours:
 
     area = cv2.contourArea(contour)
-
-
-    # 排除背景
     if area < 1000:
         continue
-
-
-    # 排除最大背景
     if area > 50000:
         continue
 
-
-
     count += 1
-
 
     cv2.drawContours(
         result,
@@ -125,16 +76,11 @@ for contour in contours:
         2
     )
 
-
     M = cv2.moments(contour)
 
-
     if M["m00"] != 0:
-
         cx = int(M["m10"]/M["m00"])
         cy = int(M["m01"]/M["m00"])
-
-
         cv2.putText(
             result,
             str(count),
@@ -145,16 +91,12 @@ for contour in contours:
             2
         )
 
-
 print("检测数量:",count)
-
-
 
 result_rgb=cv2.cvtColor(
     result,
     cv2.COLOR_BGR2RGB
 )
-
 
 plt.figure(figsize=(10,8))
 plt.imshow(result_rgb)
