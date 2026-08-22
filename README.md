@@ -438,3 +438,163 @@ Transformer / Attention
 **传统深度学习模型通常针对特定任务输出固定形式的结果，而 LLM 可以根据 Prompt 和上下文生成不同形式的内容。**
 同时认识到：
 **LLM 擅长生成合理的语言，但“合理”不等于“真实”，“流畅”也不等于“正确”。**
+# Week09 视觉项目确定与 LLM API 实践
+
+## 完成内容
+
+### 视觉项目确定
+
+确定最终视觉项目：
+
+**基于 CNN 的服装图像分类**
+
+使用 Fashion-MNIST 数据集完成服装图像分类，并计划通过 MLP 基线模型与 CNN 模型进行对比。
+
+### 数据集与任务
+
+完成 Fashion-MNIST 数据集调研：
+
+- 了解数据集基本结构
+    
+- 确定 10 个服装与鞋类分类类别
+    
+- 确定图片大小为 28 × 28
+    
+- 理解灰度图与单通道数据形式
+    
+- 确定图像分类任务
+    
+
+### 数据集划分
+
+确定：
+
+- Train：50,000
+    
+- Validation：10,000
+    
+- Test：10,000
+    
+
+理解训练集、验证集和测试集在模型训练与最终评价中的不同作用。
+
+### 数据预处理
+
+完成 Fashion-MNIST 初步预处理方案：
+
+- `ToTensor`
+    
+- 像素值 0～255 转换为 0～1
+    
+- `Normalize`
+    
+- 理解输入 CNN 的数据形式 `[1, 28, 28]`
+    
+
+### 数据加载
+
+完成 `data_loader.py` 初稿：
+
+- Fashion-MNIST 数据集加载
+    
+- Train / Validation / Test 划分
+    
+- DataLoader 构建
+    
+- Batch Size 设置
+    
+- 数据 Shape 与数据范围检查
+    
+
+### LLM API 实践
+
+使用 **DeepSeek API** 完成大模型 API 基础调用实验：
+
+- `.env` 环境变量管理
+    
+- API Key 读取
+    
+- OpenAI 风格 API Client 创建
+    
+- 最小聊天示例
+    
+- System Prompt / User Prompt
+    
+- Prompt Template
+    
+- 结构化 JSON 输出
+    
+- Python `json.loads()` 解析模型结果
+    
+
+## 主要成果
+
+### 确定最终视觉项目
+
+确定后续项目使用：
+
+**Fashion-MNIST + MLP 基线 + CNN 分类模型**
+
+计划通过：
+
+- Accuracy
+    
+- Confusion Matrix
+    
+
+比较不同模型的分类效果。
+
+### 掌握数据处理流程
+
+建立 Fashion-MNIST 的基本处理流程：
+
+```text
+Fashion-MNIST
+    ↓
+Train / Validation / Test
+    ↓
+ToTensor
+    ↓
+Normalize
+    ↓
+DataLoader
+    ↓
+输入模型
+```
+
+完成 `data_loader.py` 初稿，为后续模型训练做准备。
+
+### 初步掌握 LLM API 调用
+
+理解基本调用流程：
+
+```text
+Python
+   ↓
+Prompt
+   ↓
+DeepSeek API
+   ↓
+模型生成
+   ↓
+文本 / JSON
+   ↓
+Python 程序处理
+```
+
+同时理解 Prompt Template 可以提高 Prompt 的复用性，结构化输出可以让 LLM 生成的内容进一步被程序处理。
+
+### 本周学习重点
+
+本周开始从前期的**基础知识学习**进入**实际项目准备阶段**：
+
+- 确定最终视觉项目方向
+    
+- 完成数据集与预处理设计
+    
+- 开始搭建项目数据加载部分
+    
+- 同时完成 LLM API 的基础调用实践
+    
+
+后续主要继续完成 MLP 基线、CNN 模型训练以及模型结果分析。

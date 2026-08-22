@@ -2,15 +2,12 @@ import torch
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, random_split
 
-
 DATA_DIR = "./deep_learning/data"
 
 BATCH_SIZE = 128
 TRAIN_SAMPLES = 10000
 VAL_RATIO = 0.1
-
 SEED = 0
-
 
 def get_transform():
     return transforms.Compose([
