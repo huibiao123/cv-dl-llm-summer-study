@@ -598,3 +598,113 @@ Python 程序处理
     
 
 后续主要继续完成 MLP 基线、CNN 模型训练以及模型结果分析。
+# Week10 Fashion-MNIST视觉项目Baseline实现
+
+## 完成内容
+
+### CNN Baseline搭建
+
+完成基于 PyTorch 的 Fashion-MNIST CNN 分类 Baseline：
+
+- 搭建基础 CNN 模型
+- 使用两层卷积层提取图像特征
+- 使用 MaxPool 降低特征图尺寸
+- 使用全连接层完成 10 分类
+- 使用 `CrossEntropyLoss` 计算分类损失
+- 使用 Adam 优化器进行训练
+
+### 数据处理
+
+完成 `dataset.py`：
+
+- Fashion-MNIST 数据集加载
+- Train / Validation / Test 数据划分
+- `ToTensor` 数据转换
+- `Normalize` 数据标准化
+- DataLoader 构建
+- Batch Size 设置
+- 数据 Shape、Label 和数据范围检查
+
+当前实验数据规模：
+
+- Train：5000
+- Validation：1000
+- Test：10000
+
+### 模型结构
+
+完成 `model.py`：
+
+- `Conv2d(1 → 32)`
+- `ReLU`
+- `MaxPool`
+- `Conv2d(32 → 64)`
+- `ReLU`
+- `MaxPool`
+- `Flatten`
+- `Linear(3136 → 128)`
+- `ReLU`
+- `Linear(128 → 10)`
+
+### 工程化训练
+
+完成 `train.py`：
+
+- 自动选择 CPU / CUDA
+- 固定随机种子
+- Train / Validation 训练流程
+- Loss 与 Accuracy 统计
+- 根据 Validation Accuracy 保存最佳模型
+- 保存 `best_model.pth`
+- 保存 `history.csv`
+- 绘制 Loss 曲线
+- 绘制 Accuracy 曲线
+
+### 模型测试与分析
+
+完成 `test.py`：
+
+- 加载训练得到的最佳模型
+- 在测试集上进行推理
+- 计算 Test Accuracy
+- 统计正确预测数量
+- 生成 10×10 混淆矩阵
+- 保存 `confusion_matrix.png`
+
+## 主要成果
+
+### 建立完整视觉分类流程
+
+```
+Fashion-MNIST
+      ↓
+Dataset
+      ↓
+DataLoader
+      ↓
+CNN
+      ↓
+Training
+      ↓
+Validation
+      ↓
+保存最佳模型
+      ↓
+Test
+      ↓
+Accuracy / Loss / Confusion Matrix
+```
+
+### 初步完成视觉项目Baseline
+
+完成从数据读取、模型构建、训练、验证到测试和结果可视化的完整流程。
+
+项目目前已经从前期的**数据集调研和代码初稿**进入实际的**模型训练与实验阶段**。
+
+## 后续计划
+
+- 完成 MLP Baseline
+- 对比 MLP 与 CNN 的分类效果
+- 分析不同模型的 Accuracy 与 Loss
+- 分析 Fashion-MNIST 混淆矩阵
+- 根据实验结果总结 CNN 在图像分类任务中的优势

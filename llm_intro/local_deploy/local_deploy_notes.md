@@ -17,7 +17,7 @@ Python 3.11.9
 ollama --version
 ````
 实际版本：
-![](`screenshots/ollama_version.png`)
+![](screenshots/ollama_version.png)
 ## 3. 模型信息
 
 ### 模型名称
@@ -51,7 +51,7 @@ ollama run deepseek-r1:7b
 ### 推理结果
 模型能够正常返回关于卷积神经网络的解释，说明本地模型部署和推理流程正常。
 推理截图：
-![](`screenshots/inference_result.png`)
+![](screenshots/inference_result.png)
 
 ## 6. 实验结果
 
@@ -68,12 +68,12 @@ ollama run deepseek-r1:7b
 本次实验使用本地部署的模型完成推理，不需要通过远程 LLM API 获取回答。
 ## 7. 实验截图
 ### Ollama 环境
-![](`screenshots/inference_result.png`)
+![](screenshots/inference_result.png)
 用于记录 Ollama 安装和版本信息。
 ### 本地模型
-![](`screenshots/inference_result.png`)
+![](screenshots/inference_result.png)
 用于记录 DeepSeek-R1 7B 模型已经下载到本地。
 ### 本地推理
-![](`screenshots/inference_result.png`)
+![](screenshots/inference_result.png)
 
 用于记录 DeepSeek-R1 7B 实际运行并完成问题回答的过程。
