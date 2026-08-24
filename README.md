@@ -598,82 +598,72 @@ Python 程序处理
     
 
 后续主要继续完成 MLP 基线、CNN 模型训练以及模型结果分析。
-# Week10 Fashion-MNIST视觉项目Baseline实现
+# Week10 视觉项目Baseline与LLM实践
 
 ## 完成内容
 
-### CNN Baseline搭建
+### Fashion-MNIST CNN Baseline
 
 完成基于 PyTorch 的 Fashion-MNIST CNN 分类 Baseline：
 
-- 搭建基础 CNN 模型
-- 使用两层卷积层提取图像特征
-- 使用 MaxPool 降低特征图尺寸
-- 使用全连接层完成 10 分类
-- 使用 `CrossEntropyLoss` 计算分类损失
-- 使用 Adam 优化器进行训练
+- Fashion-MNIST 数据集加载与划分
+- `ToTensor` 与 `Normalize` 数据预处理
+- Dataset / DataLoader 构建
+- CNN 模型搭建
+- CrossEntropyLoss 损失函数
+- Adam 优化器
+- Train / Validation / Test 流程
+- 最佳模型保存
+- Loss / Accuracy 曲线绘制
+- 测试集 Accuracy 计算
+- 混淆矩阵生成
 
-### 数据处理
+### CNN模型结构
 
-完成 `dataset.py`：
+完成基础 CNN：
 
-- Fashion-MNIST 数据集加载
-- Train / Validation / Test 数据划分
-- `ToTensor` 数据转换
-- `Normalize` 数据标准化
-- DataLoader 构建
-- Batch Size 设置
-- 数据 Shape、Label 和数据范围检查
+```
+Input
+ ↓
+Conv2d(1 → 32) + ReLU + MaxPool
+ ↓
+Conv2d(32 → 64) + ReLU + MaxPool
+ ↓
+Flatten
+ ↓
+Linear(3136 → 128) + ReLU
+ ↓
+Linear(128 → 10)
+```
 
-当前实验数据规模：
+### LLM API实践
 
-- Train：5000
-- Validation：1000
-- Test：10000
+继续完成大语言模型 API 实践：
 
-### 模型结构
+- 使用 Python 调用 DeepSeek API
+- 使用 `.env` 管理 API Key
+- 配置 API Client
+- System Prompt / User Prompt
+- Prompt Template
+- 结构化 JSON 输出
+- 使用 Python 解析模型返回结果
+- 理解 API 调用的基本流程
 
-完成 `model.py`：
+### 本地LLM推理
 
-- `Conv2d(1 → 32)`
-- `ReLU`
-- `MaxPool`
-- `Conv2d(32 → 64)`
-- `ReLU`
-- `MaxPool`
-- `Flatten`
-- `Linear(3136 → 128)`
-- `ReLU`
-- `Linear(128 → 10)`
+完成 Ollama 本地推理实践：
 
-### 工程化训练
-
-完成 `train.py`：
-
-- 自动选择 CPU / CUDA
-- 固定随机种子
-- Train / Validation 训练流程
-- Loss 与 Accuracy 统计
-- 根据 Validation Accuracy 保存最佳模型
-- 保存 `best_model.pth`
-- 保存 `history.csv`
-- 绘制 Loss 曲线
-- 绘制 Accuracy 曲线
-
-### 模型测试与分析
-
-完成 `test.py`：
-
-- 加载训练得到的最佳模型
-- 在测试集上进行推理
-- 计算 Test Accuracy
-- 统计正确预测数量
-- 生成 10×10 混淆矩阵
-- 保存 `confusion_matrix.png`
+- Ollama 本地运行环境配置
+- DeepSeek-R1 7B 模型下载
+- 使用 `ollama run` 启动模型
+- 完成本地问答测试
+- 对比本地模型推理与 API 调用方式
 
 ## 主要成果
 
-### 建立完整视觉分类流程
+### 完成视觉项目Baseline
+
+建立完整的 CNN 图像分类流程：
 
 ```
 Fashion-MNIST
@@ -688,23 +678,56 @@ Training
       ↓
 Validation
       ↓
-保存最佳模型
+Best Model
       ↓
 Test
       ↓
 Accuracy / Loss / Confusion Matrix
 ```
 
-### 初步完成视觉项目Baseline
+完成：
 
-完成从数据读取、模型构建、训练、验证到测试和结果可视化的完整流程。
+- `dataset.py`
+- `model.py`
+- `train.py`
+- `test.py`
+- `best_model.pth`
+- `history.csv`
+- Loss / Accuracy 曲线
+- Confusion Matrix
 
-项目目前已经从前期的**数据集调研和代码初稿**进入实际的**模型训练与实验阶段**。
+### 建立LLM两种调用方式
 
-## 后续计划
+理解并实践两种基本的大模型使用方式：
 
-- 完成 MLP Baseline
-- 对比 MLP 与 CNN 的分类效果
-- 分析不同模型的 Accuracy 与 Loss
-- 分析 Fashion-MNIST 混淆矩阵
-- 根据实验结果总结 CNN 在图像分类任务中的优势
+```
+Python程序
+    ↓
+DeepSeek API
+    ↓
+远程模型
+    ↓
+返回结果
+```
+
+以及：
+
+```
+Python / Ollama
+    ↓
+本地模型
+    ↓
+本地推理
+    ↓
+返回结果
+```
+
+### 学习认识
+
+通过本周实践，进一步理解：
+
+- CNN 可以针对特定视觉任务进行训练
+- Baseline 可以作为后续模型对比的基准
+- LLM API 适合通过程序调用远程模型
+- Ollama 可以用于本地模型部署与推理
+- API 调用与本地推理在部署方式、资源需求和数据传输方式上存在区别
