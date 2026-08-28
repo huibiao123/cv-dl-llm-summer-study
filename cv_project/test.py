@@ -12,7 +12,8 @@ from model import FashionCNN
 from configs.config import (
     NUM_CLASSES,                                                                    #分类数量
     MODEL_PATH,
-    CONFUSION_MATRIX_PATH                                                           #混淆矩阵图片保存的位置
+    CONFUSION_MATRIX_PATH,
+    ERROR_EXAMPLES_PATH                                                                                                           #混淆矩阵图片保存的位置
 )
 
 
@@ -63,8 +64,10 @@ correct = 0
 total = 0
 
 all_labels = []
-
 all_predictions = []
+error_images = []
+error_labels = []
+error_predictions = []
 
 
 with torch.no_grad():
@@ -72,18 +75,14 @@ with torch.no_grad():
     for images, labels in test_loader:
 
         images = images.to(device)
-
         labels = labels.to(device)
 
-
         outputs = model(images)
-
 
         _, predictions = torch.max(
             outputs,
             1
         )
-
 
         total += labels.size(0)
 
@@ -91,13 +90,30 @@ with torch.no_grad():
             predictions == labels
         ).sum().item()
 
-
         all_labels.extend(
             labels.cpu().numpy()
         )
 
         all_predictions.extend(
             predictions.cpu().numpy()
+        )
+
+        # =========================
+        # 保存错误样例
+        # =========================
+
+        wrong = predictions != labels
+
+        error_images.extend(
+            images[wrong].cpu()
+        )
+
+        error_labels.extend(
+            labels[wrong].cpu().numpy()
+        )
+
+        error_predictions.extend(
+            predictions[wrong].cpu().numpy()
         )
 
 
@@ -160,6 +176,61 @@ plt.tight_layout()
 
 plt.savefig(
     CONFUSION_MATRIX_PATH,
+    dpi=300
+)
+
+
+plt.show()
+# =========================
+# 错误样例可视化
+# =========================
+
+num_examples = min(
+    25,
+    len(error_images)
+)
+
+fig, axes = plt.subplots(
+    5,
+    5,
+    figsize=(10, 10)
+)
+
+for i in range(num_examples):
+
+    ax = axes[i // 5, i % 5]
+
+    image = error_images[i].squeeze()
+
+    ax.imshow(
+        image,
+        cmap="gray"
+    )
+
+    ax.set_title(
+        f"True: {class_names[error_labels[i]]}\n"
+        f"Pred: {class_names[error_predictions[i]]}",
+        fontsize=9
+    )
+
+    ax.axis("off")
+
+
+# 如果错误样例不足25张
+for i in range(num_examples, 25):
+
+    axes[i // 5, i % 5].axis("off")
+
+
+plt.suptitle(
+    "Fashion-MNIST MLP Error Examples"
+)
+
+plt.tight_layout()
+
+
+plt.savefig(
+    ERROR_EXAMPLES_PATH,
     dpi=300
 )
 

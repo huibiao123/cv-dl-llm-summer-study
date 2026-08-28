@@ -63,3 +63,5 @@ ACCURACY_CURVE_PATH = OUTPUT_DIR / "accuracy_curve.png"
 CONFUSION_MATRIX_PATH = OUTPUT_DIR / "confusion_matrix.png"
 
 LOSS_CURVE_PATH = OUTPUT_DIR / "loss_curve.png"
+
+ERROR_EXAMPLES_PATH = OUTPUT_DIR / "error_examples.png"
